@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+data/
+
+# Données personnelles : ne jamais publier
+/data/
+data/
+*.fit
+*.gpx
+
+# Fichiers Cesium générés par le script postinstall
+/public/cesium/
