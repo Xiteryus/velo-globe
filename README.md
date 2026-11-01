@@ -93,6 +93,14 @@ src/
 scripts/            # script de copie des fichiers Cesium
 ```
 
+## Tests
+
+```bash
+npm test
+```
+
+Les tests couvrent le calcul des distances, du dénivelé, la détection des passages, le sens de circulation et les vitesses. Les données calculées (`analysis_cache`) sont séparées des données d'origine, jetables, et exclues des sauvegardes. Les fichiers GPX et FIT d'origine ne sont jamais modifiés.
+
 ## Limites connues
 
 - Pas de relief 3D : il nécessiterait un compte Cesium ion, ce que j'ai volontairement évité. Les tracés sont posés sur l'ellipsoïde.

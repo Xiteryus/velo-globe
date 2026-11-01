@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import type { ActivityGeo } from "@/lib/types";
+import TrackCharts from "@/components/TrackCharts";
 import { formatDate, formatDuration, formatElevation, formatKm, formatSpeed } from "@/lib/format";
 
 const Globe = dynamic(() => import("@/components/globe/Globe"), { ssr: false });
@@ -36,6 +37,7 @@ export default function ActivityPage() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
+  const [marker, setMarker] = useState<{ lon: number; lat: number } | null>(null);
 
   useEffect(() => {
     fetch(`/api/activities/${params.id}`).then(async (res) => {
@@ -97,7 +99,7 @@ export default function ActivityPage() {
       />
 
       <div className="mt-5 h-[420px] overflow-hidden rounded-2xl border border-white/10">
-        <Globe activities={forGlobe} selectedId={null} onSelect={() => {}} />
+        <Globe activities={forGlobe} selectedId={null} onSelect={() => {}} marker={marker} />
       </div>
 
       <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -110,6 +112,8 @@ export default function ActivityPage() {
         <Stat label="FC moyenne" value={activity.avg_hr ? activity.avg_hr + " bpm" : "–"} />
         <Stat label="Calories" value={activity.calories ? activity.calories + " kcal" : "–"} />
       </div>
+
+      <TrackCharts activityId={params.id} onHover={setMarker} />
 
       <textarea
         value={description}

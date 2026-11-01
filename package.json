@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "node scripts/copy-cesium.mjs"
+    "postinstall": "node scripts/copy-cesium.mjs",
+    "test": "vitest run"
   },
   "dependencies": {
     "@garmin/fitsdk": "^21.218.0",
@@ -27,13 +28,14 @@
     "@tailwindcss/turbopack": "^4",
     "@types/archiver": "^8.0.0",
     "@types/better-sqlite3": "^9.6.0",
-    "@types/node": "^20",
+    "@types/node": "^22.20.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
     "postcss": "^8.5.32",
     "tailwindcss": "^4.3.3",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^5.0.5"
   }
 }
